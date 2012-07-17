@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+
+<script type="text/coffeescript">
+  roundedCorners = (radius = 5) ->
+    borderRadius       : radius
+    WebkitBorderRadius : radius
+    MozBorderRadius    : radius
+
+  styleSheet =
+    STYLE type: "text/css",
+
+      CSS "body",
+        fontFamily: "Helvetica"
+        letterSpacing: -5
+        background: "#000"
+        backgroundSize: "100%"
+        color: "#fff"
+        margin: 0
+        padding: 0
+        fontWeight: "bold"
+
+      CSS "h1, h2, h3, p",
+        margin: 0
+
+      CSS "em, a",
+        fontStyle: "normal"
+        color: "#8dbd0c"
+
+      CSS "a",
+        background: "#34d0e7"
+        color: "#000"
+        textDecoration: "none"
+        roundedCorners 10
+
+      CSS "img",
+        width: "100%"
+
+      CSS "div",
+        cursor: "hand"
+        position: "absolute"
+        top: 0
+        left: 0
+
+      CSS ".code",
+        fontFamily: "'Courier New', monospace"
+        whiteSpace: "pre"
+
+  head =
+
+    HEAD {},
+      META charset: "utf-8"
+
+      META
+        name: "viewport"
+        content: """
+          width=device-width,
+          initial-scale=1.0,
+          maximum-scale=1.0,
+          user-scalable=0
+        """
+
+      TITLE "introducing dōmo"
+
+      SCRIPT src: "https://raw.github.com/tmcw/big/gh-pages/big.js"
+
+      styleSheet
+
+  body =
+
+    BODY {},
+      DIV {},
+        "introducing "
+        EM "dōmo"
+
+      DIV {},
+        EM "dōmo"
+        " is a dom-builder library."
+
+      DIV {},
+        EM "dōmo"
+        " unifies CSS and HTML into JavaScript syntax..."
+
+      DIV "...optionally sugared with CoffeeScript."
+
+      DIV {},
+        EM "dōmo"
+        " gives you most of the good parts of HAML and LESS..."
+
+      DIV {},
+        "...but in "
+        EM "less than 1KB"
+        " of minizipped JavaScript."
+
+      DIV "so."
+
+      DIV "(1)"
+
+      DIV "HTML"
+
+      DIV "instead of this:"
+
+      DIV class: "code",
+        """
+
+          <div class='code'>
+            hello world
+          </div>
+        """
+
+      DIV "you write this:"
+
+      DIV class: "code",
+        """
+
+          DIV class: 'code',
+            'hello world'
+        """
+
+      DIV "and instead of this:"
+
+      DIV class: "code",
+        """
+
+
+        <meta name='viewport'
+          content='width=device-width, initial-scale=1.0,
+          maximum-scale=1.0, user-scalable=0' />
+        """
+
+      DIV "you write this:"
+
+      DIV class: "code",
+        """
+          META
+            name: 'viewport'
+            content: \"\"\"
+              width=device-width,
+              initial-scale=1.0,
+              maximum-scale=1.0,
+              user-scalable=0
+            \"\"\"
+        """
+
+      DIV "for more markup examples, just view the source of this page!"
+
+      DIV "but!"
+
+      DIV "(2)"
+
+      DIV "CSS"
+
+      DIV {},
+        EM "dōmo"
+        " gives you two of the main benefits of LESS."
+
+      DIV {},
+        EM "nesting"
+        BR {}
+        " and "
+        BR {}
+        EM "mix-ins"
+
+      DIV "so instead of this:"
+
+      DIV class: "code",
+        """
+          a {
+            color: #000;
+          }
+
+          a img {
+            border: 0
+          }
+        """
+
+      DIV "you can write this:"
+
+      DIV class: "code",
+        """
+          CSS 'a',
+            color: '#000'
+
+            CSS 'img',
+              border: 0
+        """
+
+      DIV "you can also use regular JS/CS functions as mix-ins"
+
+      DIV "so instead of this:"
+
+      DIV class: "code",
+        """
+
+          .round-white {
+            border-radius: 5px
+            -webkit-border-radius: 5px
+            -moz-border-radius: 5px
+            color: white
+          }
+
+          .rounder-black {
+            border-radius: 10px
+            -webkit-border-radius: 10px
+            -moz-border-radius: 10px
+            color: black
+          }
+        """
+
+      DIV "you can write this:"
+
+      DIV class: "code",
+        """
+
+          roundedCorners = (radius = 5) ->
+            borderRadius: radius
+            WebkitBorderRadius: radius
+            MozBorderRadius: radius
+
+          styleSheet = STYLE type: 'text/css',
+            CSS '.round-white',
+              roundedCorners 5
+              color: 'white'
+
+            CSS '.rounder-black',
+              roundedCorners 10
+              color: 'black'
+        """
+
+      DIV "note that CoffeeScript is 100% optional."
+      DIV "(but sure does look nice)"
+
+      DIV {},
+        "but "
+        EM "why"
+        "?"
+
+      DIV "here are a few reasons."
+
+      DIV {},
+        EM "(1) fewer quirky parsers to reason about"
+
+      DIV "(just one quirky parser)"
+      DIV "this means you can just use variables anywhere you want..."
+      DIV "...without having to remember esoteric substitution corner-cases."
+
+      DIV {},
+        EM "(2) 1 language makes the build process easier"
+
+      DIV "no need to splay template strings across the DOM..."
+      DIV "...AND you can use JS dependencies to package only what you use"
+
+      DIV {},
+        EM "(3) fewer XSS opportunities and other gotchas"
+
+      DIV "no HTML means external text is injected safely"
+
+      DIV "aaaaanyway, that's all for now."
+
+      DIV {},
+        EM "questions?"
+
+      DIV {},
+        "hit me up at "
+        A href: "http://twitter.com/jedschmidt",
+          "@jedschmidt"
+        "."
+
+  dom =
+    HTML lang: "en",
+      head
+      body
+
+  document.replaceChild dom, document.documentElement
+</script>
+
+<script>
+
+!function(){for(var h=this,k=Array.prototype.slice,l=Object.prototype.hasOwnProperty,i="A ABBR ACRONYM ADDRESS AREA ARTICLE ASIDE AUDIO B BDI BDO BIG BLOCKQUOTE BODY BR BUTTON CANVAS CAPTION CITE CODE COL COLGROUP COMMAND DATALIST DD DEL DETAILS DFN DIV DL DT EM EMBED FIELDSET FIGCAPTION FIGURE FOOTER FORM FRAME FRAMESET H1 H2 H3 H4 H5 H6 HEAD HEADER HGROUP HR HTML I IFRAME IMG INPUT INS KBD KEYGEN LABEL LEGEND LI LINK MAP MARK META METER NAV NOSCRIPT OBJECT OL OPTGROUP OPTION OUTPUT P PARAM PRE PROGRESS Q RP RT RUBY SAMP SCRIPT SECTION SELECT SMALL SOURCE SPAN SPLIT STRONG STYLE SUB SUMMARY SUP TABLE TBODY TD TEXTAREA TFOOT TH THEAD TIME TITLE TR TRACK TT UL VAR VIDEO WBR".split(" "),
+j=i.length;j--;)!function(e){h[e]=function(b){var d=k.call(arguments,1);"object"!=typeof b&&(d.unshift(b),b=null);var f=b,c,a,g=document.createElement(e);for(a in f)l.call(f,a)&&(c=document.createAttribute(a.replace(/[A-Z]/g,"-$&").toLowerCase()),c.nodeValue=f[a],g.setAttributeNode(c));for(a=0;a<d.length;a++)c=d[a],c.nodeType||(c=document.createTextNode(c)),g.appendChild(c);return g}}(i[j]);h.CSS=function(e){for(var b=e+"{",d=1,f=arguments.length,c,a;d<f;)switch(a=arguments[d++],typeof a){case "object":for(c in a)b+=
+c.replace(/[A-Z]/g,"-$&").toLowerCase()+":"+a[c],"number"==typeof a[c]&&(b+="px"),b+=";";break;case "string":b=e+" "+a+b}return b+"}\n"}}();
+
+</script>
+
+<script src="http://coffeescript.org/extras/coffee-script.js"></script>
