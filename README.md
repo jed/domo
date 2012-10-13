@@ -1,12 +1,17 @@
-dōmo
-====
+dom-o
+=====
 
-dōmo unifies HTML markup and CSS style into one JavaScript syntax (optionally sugared with CoffeeScript). It's a pure JavaScript alternative to HAML and LESS, with a much smaller footprint (currently less than 1KB minizipped).
+dom-o unifies HTML markup and CSS style into one JavaScript syntax (optionally sugared with CoffeeScript). It's a pure JavaScript alternative to HAML and LESS, with a much smaller footprint (currently less than 1KB minizipped).
+
+Installation
+------------
+
+Add the `dom-o.js` script in your html, or get it from [npm](http://npmjs.org): `npm install dom-o`.
 
 Demo
 ----
 
-To see dōmo in action, check out [these slides](http://s3.amazonaws.com/domojs/domo.html) and make sure you view source when you're done.
+To see dom-o in action, check out [these slides](http://s3.amazonaws.com/domojs/domo.html) and make sure you view source when you're done.
 
 Example
 -------
@@ -14,12 +19,12 @@ Example
 ```html
 <!DOCTYPE html>
 
-<!-- dōmo doesn't require CoffeeScript, but looks a lot better
+<!-- dom-o doesn't require CoffeeScript, but looks a lot better
      with it. I'm including it here for illustrative purposes,
      but make sure you're compiling on the server. -->
 <script src="http://coffeescript.org/extras/coffee-script.js"></script>
 
-<!-- dōmo registers a global function for each HTML5 tag name,
+<!-- dom-o registers a global function for each HTML5 tag name,
      in upper-case, as well as a `CSS` function for styles. -->
 <script src="/domo.js"></script>
 
@@ -71,7 +76,7 @@ Example
           user-scalable=0
         """
 
-      TITLE "introducing dōmo"
+      TITLE "introducing dom-o"
 
       SCRIPT src: "https://raw.github.com/tmcw/big/gh-pages/big.js"
 

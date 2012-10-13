@@ -1,11 +1,11 @@
 {
-  "name": "domo",
+  "name": "dom-o",
   "version": "0.1.0",
   "description": "DOM library that unifies markup and style into JavaScript syntax",
-  "main": "domo.js",
+  "main": "dom-o.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jed/domo.git"
+    "url": "https://github.com/jed/dom-o.git"
   },
   "keywords": [
     "dom",
@@ -13,5 +13,5 @@
     "browser"
   ],
   "author": "Jed Schmidt <tr@nslator.jp>",
-  "license": "BSD"
+  "license": "MIT"
 }
