@@ -1,24 +1,25 @@
 !function() {
   var root  = this
-    , slice = Array.prototype.slice
-    , has   = Object.prototype.hasOwnProperty
-    , tags  = [
-        "A", "ABBR", "ACRONYM", "ADDRESS", "AREA", "ARTICLE", "ASIDE", "AUDIO",
-        "B", "BDI", "BDO", "BIG", "BLOCKQUOTE", "BODY", "BR", "BUTTON",
-        "CANVAS", "CAPTION", "CITE", "CODE", "COL", "COLGROUP", "COMMAND",
-        "DATALIST", "DD", "DEL", "DETAILS", "DFN", "DIV", "DL", "DT", "EM",
-        "EMBED", "FIELDSET", "FIGCAPTION", "FIGURE", "FOOTER", "FORM", "FRAME",
-        "FRAMESET", "H1", "H2", "H3", "H4", "H5", "H6", "HEAD", "HEADER",
-        "HGROUP", "HR", "HTML", "I", "IFRAME", "IMG", "INPUT", "INS", "KBD",
-        "KEYGEN", "LABEL", "LEGEND", "LI", "LINK", "MAP", "MARK", "META",
-        "METER", "NAV", "NOSCRIPT", "OBJECT", "OL", "OPTGROUP", "OPTION",
-        "OUTPUT", "P", "PARAM", "PRE", "PROGRESS", "Q", "RP", "RT", "RUBY",
-        "SAMP", "SCRIPT", "SECTION", "SELECT", "SMALL", "SOURCE", "SPAN",
-        "SPLIT", "STRONG", "STYLE", "SUB", "SUMMARY", "SUP", "TABLE", "TBODY",
-        "TD", "TEXTAREA", "TFOOT", "TH", "THEAD", "TIME", "TITLE", "TR",
-        "TRACK", "TT", "UL", "VAR", "VIDEO", "WBR" ]
-    , i = tags.length
-    , tag
+  var slice = Array.prototype.slice
+  var has   = Object.prototype.hasOwnProperty
+  var tags  = [
+    "A", "ABBR", "ACRONYM", "ADDRESS", "AREA", "ARTICLE", "ASIDE", "AUDIO",
+    "B", "BDI", "BDO", "BIG", "BLOCKQUOTE", "BODY", "BR", "BUTTON",
+    "CANVAS", "CAPTION", "CITE", "CODE", "COL", "COLGROUP", "COMMAND",
+    "DATALIST", "DD", "DEL", "DETAILS", "DFN", "DIV", "DL", "DT", "EM",
+    "EMBED", "FIELDSET", "FIGCAPTION", "FIGURE", "FOOTER", "FORM", "FRAME",
+    "FRAMESET", "H1", "H2", "H3", "H4", "H5", "H6", "HEAD", "HEADER",
+    "HGROUP", "HR", "HTML", "I", "IFRAME", "IMG", "INPUT", "INS", "KBD",
+    "KEYGEN", "LABEL", "LEGEND", "LI", "LINK", "MAP", "MARK", "META",
+    "METER", "NAV", "NOSCRIPT", "OBJECT", "OL", "OPTGROUP", "OPTION",
+    "OUTPUT", "P", "PARAM", "PRE", "PROGRESS", "Q", "RP", "RT", "RUBY",
+    "SAMP", "SCRIPT", "SECTION", "SELECT", "SMALL", "SOURCE", "SPAN",
+    "SPLIT", "STRONG", "STYLE", "SUB", "SUMMARY", "SUP", "TABLE", "TBODY",
+    "TD", "TEXTAREA", "TFOOT", "TH", "THEAD", "TIME", "TITLE", "TR",
+    "TRACK", "TT", "UL", "VAR", "VIDEO", "WBR"
+  ]
+
+  var i = tags.length
 
   while (i--) !function(nodeName) {
     root[nodeName] = function(attributes) {
@@ -59,10 +60,10 @@
 
   root.CSS = function(selector) {
     var css = selector + "{"
-      , i = 1
-      , l = arguments.length
-      , key
-      , block
+    var i = 1
+    var l = arguments.length
+    var key
+    var block
 
     while (i < l) {
       block = arguments[i++]
