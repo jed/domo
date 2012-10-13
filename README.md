@@ -6,7 +6,7 @@ dōmo unifies HTML markup and CSS style into one JavaScript syntax (optionally s
 Demo
 ----
 
-To see dōmo in action, check out [these slides](http://s3.amazonaws.com/domojs/domo.html#0) and make sure you [view source](view-source:http://s3.amazonaws.com/domojs/domo.html#0) when you're done.
+To see dōmo in action, check out [these slides](http://s3.amazonaws.com/domojs/domo.html) and make sure you view source when you're done.
 
 Example
 -------
