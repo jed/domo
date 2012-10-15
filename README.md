@@ -1,7 +1,7 @@
 dom-o
 =====
 
-dom-o is a DSL (DOM-specific language) that unifies HTML markup and CSS style into JavaScript syntax, by providing global functions for HTML5 elements and CSS declarations. To see it in action, head over to [JSBin](http://jsbin.com/egapim/1/edit).
+dom-o is a DSL (DOM-specific language) that unifies HTML markup and CSS style into JavaScript syntax, by providing global functions for HTML5 elements and CSS declarations. To see it in action, head over to [JSBin](http://jsbin.com/egapim/1/edit). Available [here](https://raw.github.com/jed/dom-o/master/dom-o.js) or on [npm](https://npmjs.org/package/dom-o).
 
 Features
 --------
@@ -14,37 +14,40 @@ Features
 Example
 -------
 
-```javascript
-document.replaceChild(
+```html
+<!doctype html>
+<script>
+  document.replaceChild(
 
-HTML({lang: "en"},
-  HEAD(
-    TITLE("Hello, world"),
-    STYLE({type: "text/css"},
-      CSS("#container",
-        {backgroundColor: "#eee"},
-        roundedCorners(5)
+  HTML({lang: "en"},
+    HEAD(
+      TITLE("Hello, world"),
+      STYLE({type: "text/css"},
+        CSS("#container",
+          {backgroundColor: "#eee"},
+          roundedCorners(5)
+        )
+      )
+    ),
+
+    BODY(
+      DIV({id: "container"},
+        "For more details about dom-o, see the source: ",
+        A({href: "//github.com/jed/dom-o/blob/master/dom-o.js"}, "View source")
       )
     )
-  ),
-
-  BODY(
-    DIV({id: "container"},
-      "For more details about dom-o, see the source: ",
-      A({href: "//github.com/jed/dom-o/blob/master/dom-o.js"}, "View source")
-    )
   )
-)
 
-, document.documentElement)
+  , document.documentElement)
 
-function roundedCorners(radius) {
-  return {
-    borderRadius       : radius,
-    WebkitBorderRadius : radius,
-    MozBorderRadius    : radius
+  function roundedCorners(radius) {
+    return {
+      borderRadius       : radius,
+      WebkitBorderRadius : radius,
+      MozBorderRadius    : radius
+    }
   }
-}
+</script>
 ```
 
 API
