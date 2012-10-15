@@ -72,7 +72,7 @@ All subsequent arguments are optional objects mapping property names to property
 
 Multiple arguments are merged into a single property list, giving you two of the benefits of using a CSS pre-processor like LESS:
 
-### 1. Rules can be nested with child rules, so that the following are identical:
+#### 1. Rules can be nested with child rules, so that the following are identical:
 
 ```javascript
 STYLE({type: "text/css"},
@@ -89,7 +89,7 @@ STYLE({type: "text/css"},
 )
 ```
 
-### 2. Plain functions can be used as mix-ins, to minimize common CSS repetition:
+#### 2. Plain functions can be used as mix-ins, to minimize common CSS repetition:
 
 ```javascript
 function roundedCorners(radius) {
