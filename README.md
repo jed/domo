@@ -52,17 +52,17 @@ API
 
 dom-o extends the global object with functions for CSS rules and HTML5 element types, allowing you to create DOM objects anywhere in your code without compiling templates from separate `script` tags.
 
-### <element>([attributes], [childNodes...])
+### *element*([*attributes*], [*childNodes*...])
 
 This returns a new DOM element of the specified name, with the optionally specified attributes, and child nodes.
 
-`element` can be any of the following valid HTML5 tag names: `A`, `ABBR`, `ACRONYM`, `ADDRESS`, `AREA`, `ARTICLE`, `ASIDE`, `AUDIO`, `B`, `BDI`, `BDO`, `BIG`, `BLOCKQUOTE`, `BODY`, `BR`, `BUTTON`, `CANVAS`, `CAPTION`, `CITE`, `CODE`, `COL`, `COLGROUP`, `COMMAND`, `DATALIST`, `DD`, `DEL`, `DETAILS`, `DFN`, `DIV`, `DL`, `DT`, `EM`, `EMBED`, `FIELDSET`, `FIGCAPTION`, `FIGURE`, `FOOTER`, `FORM`, `FRAME`, `FRAMESET`, `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `HEAD`, `HEADER`, `HGROUP`, `HR`, `HTML`, `I`, `IFRAME`, `IMG`, `INPUT`, `INS`, `KBD`, `KEYGEN`, `LABEL`, `LEGEND`, `LI`, `LINK`, `MAP`, `MARK`, `META`, `METER`, `NAV`, `NOSCRIPT`, `OBJECT`, `OL`, `OPTGROUP`, `OPTION`, `OUTPUT`, `P`, `PARAM`, `PRE`, `PROGRESS`, `Q`, `RP`, `RT`, `RUBY`, `SAMP`, `SCRIPT`, `SECTION`, `SELECT`, `SMALL`, `SOURCE`, `SPAN`, `SPLIT`, `STRONG`, `STYLE`, `SUB`, `SUMMARY`, `SUP`, `TABLE`, `TBODY`, `TD`, `TEXTAREA`, `TFOOT`, `TH`, `THEAD`, `TIME`, `TITLE`, `TR`, `TRACK`, `TT`, `UL`, `VAR`, `VIDEO`, or `WBR`.
+*element* can be any of the following valid HTML5 tag names: `A`, `ABBR`, `ACRONYM`, `ADDRESS`, `AREA`, `ARTICLE`, `ASIDE`, `AUDIO`, `B`, `BDI`, `BDO`, `BIG`, `BLOCKQUOTE`, `BODY`, `BR`, `BUTTON`, `CANVAS`, `CAPTION`, `CITE`, `CODE`, `COL`, `COLGROUP`, `COMMAND`, `DATALIST`, `DD`, `DEL`, `DETAILS`, `DFN`, `DIV`, `DL`, `DT`, `EM`, `EMBED`, `FIELDSET`, `FIGCAPTION`, `FIGURE`, `FOOTER`, `FORM`, `FRAME`, `FRAMESET`, `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `HEAD`, `HEADER`, `HGROUP`, `HR`, `HTML`, `I`, `IFRAME`, `IMG`, `INPUT`, `INS`, `KBD`, `KEYGEN`, `LABEL`, `LEGEND`, `LI`, `LINK`, `MAP`, `MARK`, `META`, `METER`, `NAV`, `NOSCRIPT`, `OBJECT`, `OL`, `OPTGROUP`, `OPTION`, `OUTPUT`, `P`, `PARAM`, `PRE`, `PROGRESS`, `Q`, `RP`, `RT`, `RUBY`, `SAMP`, `SCRIPT`, `SECTION`, `SELECT`, `SMALL`, `SOURCE`, `SPAN`, `SPLIT`, `STRONG`, `STYLE`, `SUB`, `SUMMARY`, `SUP`, `TABLE`, `TBODY`, `TD`, `TEXTAREA`, `TFOOT`, `TH`, `THEAD`, `TIME`, `TITLE`, `TR`, `TRACK`, `TT`, `UL`, `VAR`, `VIDEO`, or `WBR`.
 
 The first argument is an optional attributes object, mapping camelCased attribute names to attribute values.
 
 All subsequent arguments are optional and appended as child nodes, with any non-DOM arguments turned into text nodes.
 
-### CSS(selector, [properties...])
+### CSS(*selector*, [*properties*...])
 
 This returns a CSS rule string with the specified selector and properties, for use in a stylesheet.
 
