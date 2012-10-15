@@ -94,8 +94,8 @@ STYLE({type: "text/css"},
 ```javascript
 function roundedCorners(radius) {
   return {
-    borderRadius       : radius
-    WebkitBorderRadius : radius
+    borderRadius       : radius,
+    WebkitBorderRadius : radius,
     MozBorderRadius    : radius
   }
 }
