@@ -25,7 +25,7 @@
     root[nodeName] = function(attributes) {
       var childNodes = slice.call(arguments, 1)
 
-      if (typeof attributes != "object") {
+      if (typeof attributes != "object" || attributes.nodeType) {
         childNodes.unshift(attributes)
         attributes = null
       }
@@ -50,7 +50,7 @@
     for (i = 0; i < childNodes.length; i++) {
       child = childNodes[i]
 
-      if (!child.nodeType) child = document.createTextNode(child)
+      if (!child || !child.nodeType) child = document.createTextNode(child)
 
       el.appendChild(child)
     }
