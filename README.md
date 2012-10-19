@@ -65,7 +65,7 @@ This returns a new DOM element of the specified name, with the optionally specif
 
 The first argument is an optional attributes object, mapping camelCased attribute names to attribute values.
 
-All subsequent arguments are optional and appended as child nodes, with any non-DOM arguments turned into text nodes.
+All subsequent arguments are optional and appended as child nodes. Each child is appended as is if it's already a node (has a `nodeType` property), or converted to a  text node otherwise. This allows you to append any DOM node generated elsewhere.
 
 ### CSS(*selector*, [*properties*...])
 
