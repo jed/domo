@@ -11,6 +11,8 @@ Features
 - Straight from JS to DOM without HTML reduces XSS attack vectors.
 - Sugars well with (but completely agnostic to) CoffeeScript.
 
+Not convinced? Read a [more detailed pitch](https://gist.github.com/3916350).
+
 Example
 -------
 
