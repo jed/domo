@@ -1,6 +1,7 @@
 // WebReflection for Jed's dom-o
-var document;
-document || (document = function () {
+// node: var document = require('./document').$document;
+// DOM: $document.createElement(); ...
+this.$document = function () {
   var
     // utils
     re_sanitizeText = /[<>"']/g,
@@ -18,6 +19,25 @@ document || (document = function () {
         re_sanitizeText, cb_sanitizeText
       );
     },
+    cannotAvoidClosingTag = /script|SCRIPT|iframe|IFRAME/,
+
+    /* probably YAGNI
+    prettyPrint = function prettyPrint(node, level) {
+      for(var
+        toString = node.toString,
+        sep =  Array(++level).join("  "),
+        childNodes = node.childNodes, i = 0;
+        i < childNodes.length; i++
+      ) {
+        prettyPrint(childNodes[i++], level);
+      }
+      node.toString = function () {
+        sep = "\n" + sep + toString.call(node) + "\n" + Array(--level).join("  ");
+        node.toString = toString;
+        return sep;
+      };
+    },
+    */
 
     // generics
     Attribute = {
@@ -26,8 +46,10 @@ document || (document = function () {
       }
     },
     Element = {
-      appendChild: function appendChild(child) {
-        this.childNodes.push(child);
+      appendChild: function appendChild(node) {
+        node.parentNode = this;
+        this.childNodes.push(node);
+        return node;
       },
       setAttribute: function setAttribute(name, value) {
         var attribute = document.createAttribute(name);
@@ -38,12 +60,18 @@ document || (document = function () {
         this.attributes.push(attribute);
       },
       toString: function toString() {
-        var attributes = this.attributes.join(' ');
-        return  '<' + this.nodeName + (
+        var
+          attributes = this.attributes.join(' '),
+          childNodes = this.childNodes,
+          nodeName = this.nodeName
+        ;
+        return  '<' + nodeName + (
                   attributes.length ? ' ' + attributes : attributes
-                ) + '>' +
-                  this.childNodes.join('') +
-                '</' + this.nodeName + '>';
+                ) + (
+                  childNodes.length || cannotAvoidClosingTag.test(nodeName) ?
+                    '>' + childNodes.join('') + '</' + nodeName + '>' :
+                    '/>'
+                );
       }
     },
     Node = {
@@ -83,5 +111,20 @@ document || (document = function () {
       }
     }
   ;
+
+  /* probably YAGNI
+  document.prettyPrint = function (node) {
+    prettyPrint(node, 0);
+    return ("" + node)
+      .replace(/^\s+/, "")
+      .replace(/>\n+(\s*)</, ">\n$1<")
+      .replace(/\s+$/, "")
+    ;
+  };
+  */
+
   return document;
-}());
+}();
+
+// var html = $document.createElement("html").appendChild($document.createElement("head")).appendChild($document.createElement("script")).parentNode.parentNode.appendChild($document.createElement("body")).parentNode;
+// alert(html);
