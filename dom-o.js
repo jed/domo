@@ -25,7 +25,7 @@
     root[nodeName] = function(attributes) {
       var childNodes = slice.call(arguments, 1)
 
-      if (typeof attributes != "object" || attributes.nodeType) {
+      if (typeof attributes != "object" || attributes.nodeType || attributes instanceof Array) {
         childNodes.unshift(attributes)
         attributes = null
       }
@@ -38,6 +38,20 @@
     return text.replace(/[A-Z]/g, "-$&").toLowerCase()
   }
 
+  function appendChildren(el, childNodes) {
+    var child;
+    for (i = 0; i < childNodes.length; i++) {
+      child = childNodes[i]
+      if (child instanceof Array) {
+        appendChildren(el, child)
+      }
+      else {
+        if (!child || !child.nodeType) child = document.createTextNode(child)
+        el.appendChild(child)
+      }
+    }
+  }
+
   function Element(document, nodeName, attributes, childNodes) {
     var child, i, el = document.createElement(nodeName)
 
@@ -46,15 +60,7 @@
       child.nodeValue = attributes[i]
       el.setAttributeNode(child)
     }
-
-    for (i = 0; i < childNodes.length; i++) {
-      child = childNodes[i]
-
-      if (!child || !child.nodeType) child = document.createTextNode(child)
-
-      el.appendChild(child)
-    }
-
+    appendChildren(el, childNodes);
     return el
   }
 
