@@ -7,7 +7,7 @@ Features
 --------
 
 - Most of what you'd want from HAML or LESS, in pure JavaScript.
-- Small, dependency-free footprint (less than 1KB minizipped).
+- Small, dependency-free footprint (around 1KB minizipped).
 - Straight from JS to DOM without HTML reduces XSS attack vectors.
 - Sugars well with (but completely agnostic to) CoffeeScript.
 
@@ -55,9 +55,15 @@ Example
 API
 ---
 
-dom-o extends the global object with functions for CSS rules and HTML5 element types, allowing you to create DOM objects anywhere in your code without compiling templates from separate `script` tags.
+dom-o provides functions for CSS rules and HTML5 element types, allowing you to create DOM objects anywhere in your code without compiling templates from separate `script` tags.
 
-### *element*([*attributes*], [*childNodes*...])
+### domo.noConflict()
+
+By default, dom-o extends the global object (`window` in the browser or `global` in node) with itself and all of its DOM/CSS functions. This allows you to access them directly, and write code that behaves like a DSL, but without any compilation step.
+
+If polluting the global namespace isn't your style, you can call `domo.noConflict()`. This function restores all overwritten global object properties and returns the original namespace, much like its jQuery namesake.
+
+### domo\[*element*\]([*attributes*], [*childNodes*...])
 
 This returns a new DOM element of the specified name, with the optionally specified attributes, and child nodes.
 
@@ -65,9 +71,9 @@ This returns a new DOM element of the specified name, with the optionally specif
 
 The first argument is an optional attributes object, mapping camelCased attribute names to attribute values.
 
-All subsequent arguments are optional and appended as child nodes. Each child is appended as is if it's already a node (has a `nodeType` property), or converted to a  text node otherwise. This allows you to append any DOM node generated elsewhere.
+All subsequent arguments are optional and appended as child nodes, merging any array arguments. Each child is appended as is if it's already a node (has a `nodeType` property), or converted to a text node otherwise. This allows you to append any DOM node generated elsewhere.
 
-### CSS(*selector*, [*properties*...])
+### domo.CSS(*selector*, [*properties*...])
 
 This returns a CSS rule string with the specified selector and properties, for use in a stylesheet.
 
