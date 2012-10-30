@@ -1,8 +1,7 @@
-!function() {
-  var root  = this
+new function() {
   var slice = Array.prototype.slice
-  var has   = Object.prototype.hasOwnProperty
-  var tags  = [
+  var has = Object.prototype.hasOwnProperty
+  var tags = [
     "A", "ABBR", "ACRONYM", "ADDRESS", "AREA", "ARTICLE", "ASIDE", "AUDIO",
     "B", "BDI", "BDO", "BIG", "BLOCKQUOTE", "BODY", "BR", "BUTTON",
     "CANVAS", "CAPTION", "CITE", "CODE", "COL", "COLGROUP", "COMMAND",
@@ -22,7 +21,7 @@
   var i = tags.length
 
   while (i--) !function(nodeName) {
-    root[nodeName] = function(attributes) {
+    this[nodeName] = function(attributes) {
       var childNodes = slice.call(arguments, 1)
 
       if (typeof attributes != "object" || attributes.nodeType) {
@@ -32,7 +31,7 @@
 
       return Element(document, nodeName, attributes, childNodes)
     }
-  }(tags[i])
+  }.call(this, tags[i])
 
   function hyphenify(text) {
     return text.replace(/[A-Z]/g, "-$&").toLowerCase()
@@ -58,7 +57,7 @@
     return el
   }
 
-  root.CSS = function(selector) {
+  this.CSS = function(selector) {
     var css = selector + "{"
     var i = 1
     var l = arguments.length
@@ -89,4 +88,33 @@
 
     return css
   }
-}()
+
+  function Conflict(source, target) {
+    if (!target) target = Function("return this")()
+
+    var key, values = {}
+
+    for (key in source) {
+      if (key in target) values[key] = target[key]
+
+      target[key] = source[key]
+    }
+
+    this.undo = function() {
+      for (key in source) {
+        if (key in values) {
+          if (target[key] == source[key]) target[key] = values[key]
+        }
+
+        else delete target[key]
+      }
+
+      return source
+    }
+  }
+
+  this.domo = this
+  this.noConflict = new Conflict(this).undo
+
+  if (typeof module == "object") module.exports = this
+}
