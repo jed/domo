@@ -24,9 +24,11 @@ new function() {
     this[nodeName] = function(attributes) {
       var childNodes = slice.call(arguments, 1)
 
-      if (typeof attributes != "object" || attributes.nodeType) {
-        childNodes.unshift(attributes)
-        attributes = null
+      if (arguments.length) {
+        if (typeof attributes != "object" || attributes.nodeType) {
+          childNodes.unshift(attributes)
+          attributes = null
+        }
       }
 
       return Element(document, nodeName, attributes, childNodes)
