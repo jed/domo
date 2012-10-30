@@ -63,7 +63,7 @@ By default, dom-o extends the global object (`window` in the browser or `global`
 
 If polluting the global namespace isn't your style, you can call `domo.noConflict()`. This function restores all overwritten global object properties and returns the original namespace, much like its jQuery namesake.
 
-### domo\[*element*\]([*attributes*], [*childNodes*...])
+### domo.<element-name>([<attributes>], [<childNodes>...])
 
 This returns a new DOM element of the specified name, with the optionally specified attributes, and child nodes.
 
@@ -73,7 +73,7 @@ The first argument is an optional attributes object, mapping camelCased attribut
 
 All subsequent arguments are optional and appended as child nodes, merging any array arguments. Each child is appended as is if it's already a node (has a `nodeType` property), or converted to a text node otherwise. This allows you to append any DOM node generated elsewhere.
 
-### domo.CSS(*selector*, [*properties*...])
+### domo.CSS(<selector>, [<properties>...])
 
 This returns a CSS rule string with the specified selector and properties, for use in a stylesheet.
 
