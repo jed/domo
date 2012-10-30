@@ -51,6 +51,8 @@ new function() {
     for (i = 0; i < childNodes.length; i++) {
       child = childNodes[i]
 
+      if (typeof child == "function") child = child()
+
       if (!child || !child.nodeType) child = document.createTextNode(child)
 
       el.appendChild(child)
