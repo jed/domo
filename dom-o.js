@@ -1,5 +1,5 @@
 new function() {
-  var slice = Array.prototype.slice
+  var concat = Array.prototype.concat
   var has = Object.prototype.hasOwnProperty
   var tags = [
     "A", "ABBR", "ACRONYM", "ADDRESS", "AREA", "ARTICLE", "ASIDE", "AUDIO",
@@ -21,14 +21,14 @@ new function() {
   var i = tags.length
 
   while (i--) !function(nodeName) {
-    this[nodeName] = function(attributes) {
-      var childNodes = slice.call(arguments, 1)
+    this[nodeName] = function() {
+      var childNodes = concat.apply([], arguments)
+      var attributes = childNodes[0]
 
-      if (arguments.length) {
-        if (typeof attributes != "object" || attributes.nodeType) {
-          childNodes.unshift(attributes)
-          attributes = null
-        }
+      if (childNodes.length) {
+        typeof attributes != "object" || attributes.nodeType
+          ? attributes = null
+          : childNodes.shift()
       }
 
       return Element(document, nodeName, attributes, childNodes)
