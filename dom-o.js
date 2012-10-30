@@ -101,6 +101,8 @@ new function() {
     }
 
     this.undo = function() {
+      if (!values) return
+
       for (key in source) {
         if (key in values) {
           if (target[key] == source[key]) target[key] = values[key]
@@ -108,6 +110,8 @@ new function() {
 
         else delete target[key]
       }
+
+      values = null
 
       return source
     }
