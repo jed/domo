@@ -1,7 +1,7 @@
-dom-o
+domo
 =====
 
-dom-o is a DSL (DOM-specific language) that unifies HTML markup and CSS style into JavaScript syntax, by providing global functions for HTML5 elements and CSS declarations. To see it in action, head over to [JSBin](http://jsbin.com/egapim/1/edit). Available [here](https://raw.github.com/jed/dom-o/master/dom-o.js) or on [npm](https://npmjs.org/package/dom-o).
+domo is a DSL (DOM-specific language) that unifies HTML markup and CSS style into JavaScript syntax, by providing global functions for HTML5 elements and CSS declarations. To see it in action, head over to [JSBin](http://jsbin.com/egapim/45/edit). Available [here](https://raw.github.com/jed/domo/master/domo.js) or on [npm](https://npmjs.org/package/domo).
 
 Features
 --------
@@ -34,8 +34,8 @@ Example
 
     BODY(
       DIV({id: "container"},
-        "For more details about dom-o, see the source: ",
-        A({href: "//github.com/jed/dom-o/blob/master/dom-o.js"}, "View source")
+        "For more details about domo, see the source: ",
+        A({href: "//github.com/jed/domo/blob/master/domo.js"}, "View source")
       )
     )
   )
@@ -55,11 +55,11 @@ Example
 API
 ---
 
-dom-o provides functions for CSS rules and HTML5 element types, allowing you to create DOM objects anywhere in your code without compiling templates from separate `script` tags.
+domo provides functions for CSS rules and HTML5 element types, allowing you to create DOM objects anywhere in your code without compiling templates from separate `script` tags.
 
 ### domo.noConflict()
 
-By default, dom-o extends the global object (`window` in the browser or `global` in node) with itself and all of its DOM/CSS functions. This allows you to access them directly, and write code that behaves like a DSL, but without any compilation step.
+By default, domo extends the global object (`window` in the browser or `global` in node) with itself and all of its DOM/CSS functions. This allows you to access them directly, and write code that behaves like a DSL, but without any compilation step.
 
 If polluting the global namespace isn't your style, you can call `domo.noConflict()`. This function restores all overwritten global object properties and returns the original namespace, much like its jQuery namesake.
 
