@@ -1,6 +1,6 @@
 {
   "name": "dom-o",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "DOM library that unifies markup and style into JavaScript syntax",
   "main": "dom-o.js",
   "repository": {
