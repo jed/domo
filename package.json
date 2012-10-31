@@ -1,6 +1,6 @@
 {
   "name": "domo",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "DOM library that unifies markup and style into JavaScript syntax",
   "main": "index.js",
   "repository": {
