@@ -1,6 +1,6 @@
-new function() {
-  var concat = Array.prototype.concat
-  var has = Object.prototype.hasOwnProperty
+!function() {
+  var global = Function("return this")()
+
   var tags = [
     "A", "ABBR", "ACRONYM", "ADDRESS", "AREA", "ARTICLE", "ASIDE", "AUDIO",
     "B", "BDI", "BDO", "BIG", "BLOCKQUOTE", "BODY", "BR", "BUTTON",
@@ -18,36 +18,54 @@ new function() {
     "TRACK", "TT", "UL", "VAR", "VIDEO", "WBR"
   ]
 
-  var i = tags.length
-
-  while (i--) !function(nodeName) {
-    this[nodeName] = function() {
-      var childNodes = concat.apply([], arguments)
-      var attributes = childNodes[0]
-
-      if (childNodes.length) {
-        if (typeof attributes != "object" || attributes.nodeType) {
-          attributes = null
-        }
-
-        else childNodes.shift()
-      }
-
-      return Element(document, nodeName, attributes, childNodes)
-    }
-  }.call(this, tags[i])
-
   function hyphenify(text) {
     return text.replace(/[A-Z]/g, "-$&").toLowerCase()
   }
 
-  function Element(document, nodeName, attributes, childNodes) {
-    var child, i, el = document.createElement(nodeName)
+  function has(object, key) {
+    return Object.prototype.hasOwnProperty.call(object, key)
+  }
 
-    for (i in attributes) if (has.call(attributes, i)) {
-      child = document.createAttribute(hyphenify(i))
-      child.nodeValue = attributes[i]
-      el.setAttributeNode(child)
+  function flatten(list) {
+    return Array.prototype.concat.apply([], list)
+  }
+
+  function Domo(document) {
+    var i = tags.length
+    var domo = this
+
+    domo.Domo = Domo
+    domo.domo = domo
+    domo.document = document || global.document
+
+    domo.CSS = domo.createCSSRule
+
+    while (i--) !function(nodeName) {
+      domo[nodeName] = function() {
+        var childNodes = flatten(arguments)
+        var attributes = childNodes[0]
+
+        if (childNodes.length) {
+          if (typeof attributes != "object" || attributes.nodeType) {
+            attributes = null
+          }
+
+          else childNodes.shift()
+        }
+
+        return domo.createElement(nodeName, attributes, childNodes)
+      }
+    }(tags[i])
+  }
+
+  Domo.prototype.createElement = function(nodeName, attributes, childNodes) {
+    var doc = this.document
+    var el = doc.createElement(nodeName)
+    var child
+    var i
+
+    for (i in attributes) {
+      if (has(attributes, i)) el.setAttribute(hyphenify(i), attributes[i])
     }
 
     for (i = 0; i < childNodes.length; i++) {
@@ -55,19 +73,17 @@ new function() {
 
       if (typeof child == "function") child = child()
 
-      if (!child || !child.nodeType) child = document.createTextNode(child)
+      if (!child || !child.nodeType) child = doc.createTextNode(child)
 
       el.appendChild(child)
     }
 
-    if (nodeName == "HTML") {
-      document.replaceChild(el, document.documentElement)
-    }
+    if (nodeName == "HTML") doc.replaceChild(el, doc.documentElement)
 
     return el
   }
 
-  this.CSS = function(selector) {
+  Domo.prototype.createCSSRule = function(selector) {
     var css = selector + "{"
     var i = 1
     var l = arguments.length
@@ -99,36 +115,39 @@ new function() {
     return css
   }
 
-  function Conflict(source, target) {
-    if (!target) target = Function("return this")()
+  Domo.prototype.globalize = function() {
+    var domo = this
+    var values = {}
+    var key
 
-    var key, values = {}
+    for (key in domo) {
+      if (!has(domo, key)) continue
 
-    for (key in source) {
-      if (key in target) values[key] = target[key]
+      if (key in global) values[key] = global[key]
 
-      target[key] = source[key]
+      global[key] = domo[key]
     }
 
-    this.undo = function() {
+    domo.noConflict = function() {
       if (!values) return
 
-      for (key in source) {
+      for (key in domo) {
         if (key in values) {
-          if (target[key] == source[key]) target[key] = values[key]
+          if (global[key] == domo[key]) global[key] = values[key]
         }
 
-        else delete target[key]
+        else delete global[key]
       }
 
       values = null
 
-      return source
+      return domo
     }
+
+    return domo
   }
 
-  this.domo = this
-  this.noConflict = new Conflict(this).undo
-
-  if (typeof module == "object") module.exports = this
-}
+  typeof module == "object"
+    ? module.exports = Domo
+    : (new Domo).globalize()
+}()
