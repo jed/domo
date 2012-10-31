@@ -1,7 +1,7 @@
 domo
 ====
 
-domo is a JavaScript library that pulls HTML markup and CSS style into JavaScript syntax, in the [browser][browser] and on the [server][server]. It's a simpler, easier, and more reliable alternative to template engines and CSS pre-processors. You can find it on [domo_github][domo_githubg] and [npm][npm].
+domo is a JavaScript library that pulls HTML markup and CSS style into JavaScript syntax, in the [browser][browser] and on the [server][server]. It's a simpler, easier, and more reliable alternative to template engines and CSS pre-processors. You can find it on [github][domo_github] and [npm][npm].
 
 [browser]: #browser
 [server]: #server
