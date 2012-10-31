@@ -19,8 +19,6 @@ Example
 ```html
 <!doctype html>
 <script>
-  document.replaceChild(
-
   HTML({lang: "en"},
     HEAD(
       TITLE("Hello, world"),
@@ -39,8 +37,6 @@ Example
       )
     )
   )
-
-  , document.documentElement)
 
   function roundedCorners(radius) {
     return {
@@ -65,7 +61,7 @@ If polluting the global namespace isn't your style, you can call `domo.noConflic
 
 ### domo.{element-name}([{attributes}], [{childNodes}...])
 
-This returns a new DOM element of the specified name, with the optionally specified attributes, and child nodes.
+This returns a new DOM element of the specified name, with the optionally specified attributes, and child nodes. If the element name is `HTML`, the current document element will also be replaced with the returned element.
 
 *element* can be any of the following valid HTML5 tag names: `A`, `ABBR`, `ACRONYM`, `ADDRESS`, `AREA`, `ARTICLE`, `ASIDE`, `AUDIO`, `B`, `BDI`, `BDO`, `BIG`, `BLOCKQUOTE`, `BODY`, `BR`, `BUTTON`, `CANVAS`, `CAPTION`, `CITE`, `CODE`, `COL`, `COLGROUP`, `COMMAND`, `DATALIST`, `DD`, `DEL`, `DETAILS`, `DFN`, `DIV`, `DL`, `DT`, `EM`, `EMBED`, `FIELDSET`, `FIGCAPTION`, `FIGURE`, `FOOTER`, `FORM`, `FRAME`, `FRAMESET`, `H1`, `H2`, `H3`, `H4`, `H5`, `H6`, `HEAD`, `HEADER`, `HGROUP`, `HR`, `HTML`, `I`, `IFRAME`, `IMG`, `INPUT`, `INS`, `KBD`, `KEYGEN`, `LABEL`, `LEGEND`, `LI`, `LINK`, `MAP`, `MARK`, `META`, `METER`, `NAV`, `NOSCRIPT`, `OBJECT`, `OL`, `OPTGROUP`, `OPTION`, `OUTPUT`, `P`, `PARAM`, `PRE`, `PROGRESS`, `Q`, `RP`, `RT`, `RUBY`, `SAMP`, `SCRIPT`, `SECTION`, `SELECT`, `SMALL`, `SOURCE`, `SPAN`, `SPLIT`, `STRONG`, `STYLE`, `SUB`, `SUMMARY`, `SUP`, `TABLE`, `TBODY`, `TD`, `TEXTAREA`, `TFOOT`, `TH`, `THEAD`, `TIME`, `TITLE`, `TR`, `TRACK`, `TT`, `UL`, `VAR`, `VIDEO`, or `WBR`.
 

@@ -60,6 +60,10 @@ new function() {
       el.appendChild(child)
     }
 
+    if (nodeName == "HTML") {
+      document.replaceChild(el, document.documentElement)
+    }
+
     return el
   }
 
