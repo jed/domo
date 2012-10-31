@@ -62,12 +62,14 @@
   Domo.prototype.createElement = function(nodeName, attributes, childNodes) {
     var doc = this.document
     var el = doc.createElement(nodeName)
-    var child
+
     var i
 
     for (i in attributes) {
       if (has(attributes, i)) el.setAttribute(hyphenify(i), attributes[i])
     }
+
+    var child
 
     for (i = 0; i < childNodes.length; i++) {
       child = childNodes[i]
