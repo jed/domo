@@ -72,6 +72,22 @@ function Element() {
   this.childNodes = []
 }
 
+Element.voids = {
+  area   : true ,
+  br     : true ,
+  col    : true ,
+  embed  : true ,
+  frame  : true ,
+  hr     : true ,
+  img    : true ,
+  input  : true ,
+  link   : true ,
+  meta   : true ,
+  param  : true ,
+  source : true ,
+  wbr    : true
+}
+
 Element.prototype = {
   nodeType: 1,
 
@@ -93,7 +109,13 @@ Element.prototype = {
     var attributes = this.attributes.join("")
     var childNodes = this.childNodes.join("")
 
-    return "<" + nodeName + attributes + ">" + childNodes + "</" + nodeName + ">"
+    var html = "<" + nodeName + attributes + ">"
+
+    if (!Element.voids[nodeName]) {
+      html += childNodes + "</" + nodeName + ">"
+    }
+
+    return html
   },
 
   get outerHTML() {
