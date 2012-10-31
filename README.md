@@ -1,5 +1,5 @@
 domo
-=====
+====
 
 domo is a DSL (DOM-specific language) that unifies HTML markup and CSS style into JavaScript syntax, by providing global functions for HTML5 elements and CSS declarations. To see it in action, head over to [JSBin](http://jsbin.com/egapim/46/edit). Available [here](https://raw.github.com/jed/domo/master/domo.js) or on [npm](https://npmjs.org/package/domo).
 
@@ -16,8 +16,11 @@ Not convinced? Read a [more detailed pitch](https://gist.github.com/3916350).
 Example
 -------
 
+The following is a simple, self=contained example using domo. It generates a DOM tree and replaces the existing documentElement, using a plain old function as a CSS mixin.
+
 ```html
 <!doctype html>
+<script src="domo.js"></script>
 <script>
   HTML({lang: "en"},
     HEAD(
@@ -33,6 +36,8 @@ Example
     BODY(
       DIV({id: "container"},
         "For more details about domo, see the source: ",
+        BR,
+        BR,
         A({href: "//github.com/jed/domo/blob/master/domo.js"}, "View source")
       )
     )
