@@ -7,6 +7,7 @@ Document.prototype = {
   nodeType: 9,
 
   replaceChild: function(){},
+  getElementsByTagName: function(){ return [] },
 
   appendChild: function(child) {
     this.childNodes.push(child)

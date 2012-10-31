@@ -81,7 +81,16 @@
       el.appendChild(child)
     }
 
-    if (nodeName == "HTML") doc.replaceChild(el, doc.documentElement)
+    var replaced
+
+    switch (nodeName) {
+      case "HTML":
+      case "HEAD":
+      case "BODY":
+        if (replaced = doc.getElementsByTagName(nodeName)[0]) {
+          replaced.parentNode.replaceChild(el, replaced)
+        }
+    }
 
     return el
   }
