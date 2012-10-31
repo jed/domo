@@ -39,6 +39,7 @@
     domo.document = document || global.document
 
     domo.CSS = domo.createCSSRule
+    domo.COMMENT = domo.createComment
 
     while (i--) !function(nodeName) {
       domo[nodeName] = function() {
@@ -81,6 +82,10 @@
     if (nodeName == "HTML") doc.replaceChild(el, doc.documentElement)
 
     return el
+  }
+
+  Domo.prototype.createComment = function(nodeValue) {
+    return this.document.createComment(nodeValue)
   }
 
   Domo.prototype.createCSSRule = function(selector) {
