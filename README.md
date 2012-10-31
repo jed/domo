@@ -70,11 +70,14 @@ Why domo?
 - **Reduce the number of moving parts.** Instead of shipping HTML containing strings that compile into JavaScript functions that return HTML used to create DOM nodes, just use JavaScript to create DOM nodes, potentially eliminating [underscore][underscore]/[jQuery][jQuery] dependencies at the same time.
 
 [underscore]: http://underscorejs.org/#template
+[jQuery]: http://api.jquery.com/html
 
 - **Reuse existing infrastructure.** Any tools you use in your JavaScript workflow, such as minification or packaging, can now be used for your styles and markup too. You can even use something like [browserify][browserify] to easily discover all app dependencies and maintain code modularity.
+
 [browserify]: https://github.com/substack/node-browserify
 
 - **Lessen the burden of context switching.** Whether using JavaScript on both the client and server enables code reuse is debatable, but that it prevents the overhead of switching contexts between languages is less so. It may be subjective, but I think using one language everywhere reduces the congitive overhead for web app development.
+
 API
 ---
 
