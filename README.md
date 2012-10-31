@@ -1,7 +1,7 @@
 domo
 =====
 
-domo is a DSL (DOM-specific language) that unifies HTML markup and CSS style into JavaScript syntax, by providing global functions for HTML5 elements and CSS declarations. To see it in action, head over to [JSBin](http://jsbin.com/egapim/45/edit). Available [here](https://raw.github.com/jed/domo/master/domo.js) or on [npm](https://npmjs.org/package/domo).
+domo is a DSL (DOM-specific language) that unifies HTML markup and CSS style into JavaScript syntax, by providing global functions for HTML5 elements and CSS declarations. To see it in action, head over to [JSBin](http://jsbin.com/egapim/46/edit). Available [here](https://raw.github.com/jed/domo/master/domo.js) or on [npm](https://npmjs.org/package/domo).
 
 Features
 --------
