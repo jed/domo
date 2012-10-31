@@ -26,9 +26,11 @@ new function() {
       var attributes = childNodes[0]
 
       if (childNodes.length) {
-        typeof attributes != "object" || attributes.nodeType
-          ? attributes = null
-          : childNodes.shift()
+        if (typeof attributes != "object" || attributes.nodeType) {
+          attributes = null
+        }
+
+        else childNodes.shift()
       }
 
       return Element(document, nodeName, attributes, childNodes)
