@@ -153,6 +153,43 @@ Using domo for CSS
 
 Coming soon.
 
+Using domo on the server
+------------------------
+
+domo really shines when used to build DOM code on the client. But since you'll likely need to render an HTML client in the first place, domo also ships with a [window.document shim](https://github.com/jed/domo/blob/master/document.js) that can be used to render HTML on the server. It's a small (under 1KB minizipped) mock DOM implementation with just enough logic to render HTML.
+
+Once you've run `npm install domo`, the API for the server is the same as that for the client. Just `require("domo")`, create a DOM, and then use the `outerHTML` property to serialize it into HTML. domo also adds a top-level `DOCUMENT` function for creating an entire HTML document with doctype, like this:
+
+```javascript
+require("domo")
+
+var document =
+
+DOCUMENT({type: "html"}
+  HTML(
+    HEAD(
+      SCRIPT({src: "/app.js"})
+    ),
+    BODY("Loading...")
+  )
+)
+
+console.log(document.outerHTML)
+```
+
+which would render into this:
+
+```html
+<!DOCTYPE html>
+<html><head><script src="/app.js"></script></head><body>Loading...</body></html>
+```
+
+Some things to note about using domo on the server:
+
+- The attributes passed to DOCUMENT are optional, and the `type` attribute defaults to `html`.
+- All text node strings and attribute values are HTML-escaped.
+- The `outerHTML` is available on the document and every element, and is a lazy ES5 getter that calls `toString()`.
+
 Using domo with CoffeeScript
 ----------------------------
 
