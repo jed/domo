@@ -142,3 +142,18 @@ STYLE({type: "text/css"},
   CSS("h2", roundedCorners(5))
 )
 ```
+
+Using domo for HTML
+-------------------
+
+Coming soon.
+
+Using domo for CSS
+------------------
+
+Coming soon.
+
+Using domo with CoffeeScript
+----------------------------
+
+Coming soon.
