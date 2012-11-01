@@ -94,6 +94,7 @@ Element.prototype = {
 
   appendChild: function(child) {
     this.childNodes.push(child)
+    child.parentNode = this
   },
 
   setAttribute: function(name, value) {
@@ -130,7 +131,14 @@ TextNode.prototype = {
   nodeType: 3,
 
   toString: function() {
-    return escapeHTML(this.nodeValue)
+    var nodeValue = this.nodeValue
+    var parentNode = this.parentNode
+
+    if (parentNode && parentNode.nodeName != "SCRIPT") {
+      nodeValue = escapeHTML(nodeValue)
+    }
+
+    return nodeValue
   }
 }
 
