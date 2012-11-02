@@ -11,9 +11,9 @@ module.exports = (data) ->
       String readFileSync resolve __dirname, "dom.coffee"
 
     SCRIPT {src} for src in [
-      "/lib/domo.js"
-      "/docs/vendor/prettify.js"
-      "/docs/vendor/coffee.js"
+      "lib/domo.js"
+      "docs/vendor/prettify.js"
+      "docs/vendor/coffee.js"
     ]
 
     SCRIPT "domo.stats = #{json}"
