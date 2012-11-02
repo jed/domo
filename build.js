@@ -1,30 +1,70 @@
-var fs       = require("fs")
-var path     = require("path")
-var zlib     = require("zlib")
-var uglify   = require("uglify-js")
-var coffee   = require("coffee-script")
-var template = require("./docs/html")
+var fs     = require("fs")
+var path   = require("path")
+var zlib   = require("zlib")
+var uglify = require("uglify-js")
+var coffee = require("coffee-script")
+var domo   = require("./")
 
-var domoPath = path.resolve(__dirname, "lib", "domo.js")
+build()
 
-fs.readFile(domoPath, "utf8", function(err, data) {
-  if (err) throw err
+function build() {
+  compileJS(throwError)
+  compileHTML(throwError)
+}
 
-  zlib.gzip(uglify(data), function(err, data) {
-    if (err) throw err
+function compileJS(cb) {
+  var csPath = path.resolve(__dirname, "docs", "index.coffee")
+  var jsPath = path.resolve(__dirname, "docs", "index.js")
 
-    var byteCount = data.length
-    var size = Math.round(byteCount / 100) / 10
+  fs.readFile(csPath, "utf8", function(err, data) {
+    if (err) return cb(err)
 
-    var html = template({
-      byteCount: byteCount,
-      size: size + "kb"
-    })
+    try { var js = coffee.compile(data, {bare: true}) }
+    catch (err) { return cb(err) }
 
-    var htmlPath = path.resolve(__dirname, "index.html")
+    fs.writeFile(jsPath, uglify(js), cb)
+  })
+}
 
-    fs.writeFile(htmlPath, html, function(err) {
-      if (err) throw err
+function compileHTML(cb) {
+  var htmlPath = path.resolve(__dirname, "index.html")
+
+  getSize(function(err, size) {
+    if (err) return cb(err)
+
+    var dom =
+
+    DOCUMENT(
+      SCRIPT({src: "lib/domo.js"}),
+      SCRIPT("domo.size", "=", size),
+      SCRIPT({src: "docs/index.js", charset: "utf-8"}),
+
+      NOSCRIPT(
+        META({
+          httpEquiv: "refresh",
+          content: "0;url=https://github.com/jed/domo"
+        })
+      )
+    )
+
+    fs.writeFile(htmlPath, dom.outerHTML, cb)
+  })
+}
+
+function getSize(cb) {
+  var domoPath = path.resolve(__dirname, "lib", "domo.js")
+
+  fs.readFile(domoPath, "utf8", function(err, data) {
+    if (err) return cb(err)
+
+    zlib.gzip(uglify(data), function(err, data) {
+      if (err) return cb(err)
+
+      cb(null, data.length)
     })
   })
-})
+}
+
+function throwError(err) {
+  if (err) throw err
+}

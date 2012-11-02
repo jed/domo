@@ -1,5 +1,3 @@
-
-
 HTML lang: "en",
   HEAD {},
     TITLE "dōmo: Markup, style, and code in one language."
@@ -75,8 +73,9 @@ HTML lang: "en",
     H1 "dōmo"
     H2 "Markup, style, and code in one language."
 
-    P "dōmo lets you write HTML markup and CSS style in JavaScript syntax, in the browser and on the server."
-    P "At #{domo.stats.size} of minizipped JavaScript, dōmo is a simpler, easier, and more reliable alternative to template engines and CSS pre-processors."
+    P {},
+      "dōmo lets you write HTML markup and CSS style in JavaScript syntax, in the browser and on the server. "
+      "At just #{domo.size} of minizipped JavaScript, dōmo is a simpler, easier, and more reliable alternative to template engines and CSS pre-processors."
 
     H3 "Example"
 
@@ -149,3 +148,5 @@ HTML lang: "en",
     P {},
       "dōmo also adds a top-level `DOCUMENT` function for creating an entire HTML document with doctype, like this:"
 
+    SCRIPT src: "docs/vendor/prettify.js", onload: "prettyPrint()"
+    SCRIPT src: "docs/vendor/coffee.js"
