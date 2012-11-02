@@ -75,7 +75,7 @@ HTML lang: "en",
 
     P {},
       "dōmo lets you write HTML markup and CSS style in JavaScript syntax, in the browser and on the server. "
-      "At just #{domo.size} of minizipped JavaScript, dōmo is a simpler, easier, and more reliable alternative to template engines and CSS pre-processors."
+      "At less than #{Math.ceil(domo.stats.size / 1000)}kb of minizipped JavaScript, dōmo is a simpler, easier, and more reliable alternative to template engines and CSS pre-processors."
 
     H3 "Example"
 

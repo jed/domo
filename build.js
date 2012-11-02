@@ -4,6 +4,7 @@ var zlib   = require("zlib")
 var uglify = require("uglify-js")
 var coffee = require("coffee-script")
 var domo   = require("./")
+var info   = require("./package")
 
 compileJS()
 compileHTML()
@@ -24,14 +25,19 @@ function compileHTML() {
   var domo = fs.readFileSync(domoPath, "utf8")
   var minifiedDomo = uglify(domo)
 
-  zlib.gzip(minifiedDomo, function(err, data) {
+  zlib.gzip(minifiedDomo, function(err, minizippedDomo) {
     if (err) throw err
+
+    var stats = {
+      size: minizippedDomo.length,
+      version: info.version
+    }
 
     var dom =
 
     DOCUMENT(
       SCRIPT(minifiedDomo),
-      SCRIPT("domo.size", "=", minifiedDomo.length),
+      SCRIPT("domo.stats=", JSON.stringify(stats)),
       SCRIPT({src: "docs/index.js", charset: "utf-8"}),
 
       NOSCRIPT(
