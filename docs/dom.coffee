@@ -81,7 +81,7 @@ HTML lang: "en",
     H3 "Example"
 
     P {},
-      "The following is a simple, self-contained example using domo in the browser. "
+      "The following is a simple, self-contained example using dōmo in the browser. "
       "It replaces the existing documentElement with a DOM tree, using a simple function as a CSS mixin."
 
     DIV class: "sub",
@@ -96,7 +96,7 @@ HTML lang: "en",
 
             HTML({lang: "en"},
               HEAD(
-                TITLE("Simple domo example"),
+                TITLE("Simple dōmo example"),
                 STYLE({type: "text/css"},
                   CSS("body", {textAlign: "center", fontSize: 100}),
                   CSS("h1", opacity(50), {background: "#000", color: "#fff"})
@@ -108,20 +108,20 @@ HTML lang: "en",
           <\/script>
         """
 
-    H3 "Why domo?"
+    H3 "Why dōmo?"
 
-    UL class: "why-domo",
+    UL class: "why-dōmo",
       LI B "Reduce your exposure to XSS attacks. "
       "Writing straight from JavaScript to DOM without an HTML step means you don't need to rely on a library to sanitize your rendered data because the browser does it for you automatically."
 
       LI B "Eliminate a separate compile step. "
-      "With domo, 'compilation' is done in the same JavaScript process as your code, which means that any syntax errors are thrown with line numbers in the same JavaScript process."
+      "With dōmo, 'compilation' is done in the same JavaScript process as your code, which means that any syntax errors are thrown with line numbers in the same JavaScript process."
 
-      LI B "Don't let implentations drive architectural decisions. "
+      LI B "Don't let implementations drive architectural decisions. "
       "If you're writing a view that renders a DOM node, you can write it directly within the rendering code for convenience, and then pull it out into its own file when the size of your app requires it."
 
       LI B "Use JavaScript syntax everywhere. "
-      "Instead of remembering which HAML or LESS symbols map to which behaviors like looping or escaping or conditionals or negation, just use JavaScript."
+      "Instead of remembering which HAML or LESS symbols map to which behaviors, like looping or escaping or conditionals or negation, just use JavaScript."
 
       LI B "Decouple your syntax sugar. "
       "Instead of choosing a template engine or CSS compiler with the ideal syntax, just use JavaScript, and do your sweetening on a more reliable level. CoffeeScript can go a long way in making DOM building code look like HAML, for example."
@@ -135,11 +135,11 @@ HTML lang: "en",
       LI B "Lessen the burden of context switching. "
       "Whether using JavaScript on both the client and server enables code reuse is debatable, but that it prevents the overhead of switching contexts between languages is less so. It may be subjective, but I think using one language everywhere reduces the congitive overhead for web app development."
 
-    H3 "Using domo on the server"
+    H3 "Using dōmo on the server"
 
     P {},
-      "domo really shines when used to build DOM code on the client. "
-      "But since you'll likely need to render an HTML client in the first place, domo also ships with a window.document shim for rendering HTML on the server. "
+      "dōmo really shines when used to build DOM code on the client. "
+      "But since you'll likely need to render an HTML client in the first place, dōmo also ships with a window.document shim for rendering HTML on the server. "
       "It's a small (under 1KB minizipped) mock DOM implementation with just enough logic to render HTML. "
 
     P {},
@@ -147,5 +147,5 @@ HTML lang: "en",
       "Just `require('domo')`, create a DOM, and then use the `outerHTML` property to serialize it into HTML."
 
     P {},
-      "domo also adds a top-level `DOCUMENT` function for creating an entire HTML document with doctype, like this:"
+      "dōmo also adds a top-level `DOCUMENT` function for creating an entire HTML document with doctype, like this:"
 
