@@ -18,6 +18,6 @@ module.exports = (data) ->
           "docs/vendor/coffee.js"
         ]
 
-        SCRIPT "domo.stats = " + JSON.stringify data, null, 2
+        SCRIPT "domo.stats", "=", JSON.stringify data
 
   .outerHTML
