@@ -12,7 +12,7 @@ HTML lang: "en",
         pln: "#000", str: "#080", kwd: "#008", com: "#800", typ: "#606"
         lit: "#066", pun: "#660", opn: "#660", clo: "#660", tag: "#008"
         atn: "#606", atv: "#080", dec: "#606", var: "#606", fun: "red"
-      })...
+      })
 
     STYLE type: "text/css",
       CSS ".prettyprint"                        , padding: 2
