@@ -186,9 +186,9 @@ which would render into this:
 
 Some things to note about using domo on the server:
 
-- The attributes passed to DOCUMENT are optional, and the `type` attribute defaults to `html`.
+- The attributes passed to `DOCUMENT` are optional, with the `type` attribute defaulting to `html`.
 - All text node strings and attribute values are HTML-escaped.
-- The `outerHTML` is available on the document and every element, and is a lazy ES5 getter that calls `toString()`.
+- The `outerHTML` is available on the document and every element, and is a lazy ES5 getter that calls `toString()` for performance.
 
 Using domo with CoffeeScript
 ----------------------------
