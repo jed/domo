@@ -7,6 +7,8 @@ module.exports = (data) ->
 
   DOCUMENT type: "html",
 
+    META charset: "utf-8"
+
     SCRIPT type: "text/coffeescript",
       String readFileSync resolve __dirname, "dom.coffee"
 
