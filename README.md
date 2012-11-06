@@ -1,10 +1,8 @@
 domo
 ====
 
-domo is a JavaScript library that pulls HTML markup and CSS style into JavaScript syntax, in the [browser][browser] and on the [server][server]. It's a simpler, easier, and more reliable alternative to template engines and CSS pre-processors. You can find it on [github][domo_github] and [npm][npm].
+domo is a JavaScript library that pulls HTML markup and CSS style into JavaScript syntax, in the browser and on the server. It's a simpler, easier, and more reliable alternative to template engines and CSS pre-processors. You can find it on [github][domo_github] and [npm][npm].
 
-[browser]: #browser
-[server]: #server
 [domo_github]: https://raw.github.com/jed/domo/master/domo.js
 [npm]: https://npmjs.org/package/domo
 
@@ -21,7 +19,7 @@ The following is a simple, self-contained example using domo in the browser. It 
     HEAD(
       TITLE("Hello, world"),
       STYLE({type: "text/css"},
-        CSS("#container",
+        RULE("#container",
           {backgroundColor: "#eee"},
           roundedCorners(5)
         )
@@ -83,11 +81,11 @@ API
 
 domo provides functions for CSS rules and HTML5 element types, allowing you to create DOM objects anywhere in your code without compiling templates from separate `script` tags.
 
-### domo.noConflict()
+### domo.global(isGlobal)
 
 By default, domo extends the global object (`window` in the browser or `global` in node) with itself and all of its DOM/CSS functions. This allows you to access them directly, and write code that behaves like a DSL, but without any compilation step.
 
-If polluting the global namespace isn't your style, you can call `domo.noConflict()`. This function restores all overwritten global object properties and returns the original namespace, much like its jQuery namesake.
+If polluting the global namespace isn't your style, you can call `domo.global(false)`. This function restores all overwritten global object properties and returns the original namespace, much like the jQuery `.noConflict()` method.
 
 ### domo.{element-name}([{attributes}], [{childNodes}...])
 
@@ -99,7 +97,7 @@ The first argument is an optional attributes object, mapping camelCased attribut
 
 All subsequent arguments are optional and appended as child nodes, merging any array arguments. Each child is appended as is if it's already a node (has a `nodeType` property), or converted to a text node otherwise. This allows you to append any DOM node generated elsewhere.
 
-### domo.CSS({selector}, [{properties}...])
+### domo.RULE({selector}, [{properties}...])
 
 This returns a CSS rule string with the specified selector and properties, for use in a stylesheet.
 
@@ -113,16 +111,16 @@ Multiple arguments are merged into a single property list, giving you two of the
 
 ```javascript
 STYLE({type: "text/css"},
-  CSS("a", {color: "red"},
-    CSS("img", {borderWidth: 0})
+  RULE("a", {color: "red"},
+    RULE("img", {borderWidth: 0})
   )
 )
 ```
 
 ```javascript
 STYLE({type: "text/css"},
-  CSS("a", {color: "red"}),
-  CSS("a img", {borderWidth: 0})
+  RULE("a", {color: "red"}),
+  RULE("a img", {borderWidth: 0})
 )
 ```
 
@@ -138,20 +136,10 @@ function roundedCorners(radius) {
 }
 
 STYLE({type: "text/css"},
-  CSS("h1", roundedCorners(10)),
-  CSS("h2", roundedCorners(5))
+  RULE("h1", roundedCorners(10)),
+  RULE("h2", roundedCorners(5))
 )
 ```
-
-Using domo for HTML
--------------------
-
-Coming soon.
-
-Using domo for CSS
-------------------
-
-Coming soon.
 
 Using domo on the server
 ------------------------
@@ -189,8 +177,3 @@ Some things to note about using domo on the server:
 - The attributes passed to `DOCUMENT` are optional, with the `type` attribute defaulting to `html`.
 - All text node strings and attribute values are HTML-escaped.
 - The `outerHTML` is available on the document and every element, and is a lazy ES5 getter that calls `toString()` for performance.
-
-Using domo with CoffeeScript
-----------------------------
-
-Coming soon.
