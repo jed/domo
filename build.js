@@ -36,7 +36,7 @@ function compileHTML() {
     var dom =
 
     DOCUMENT(
-      SCRIPT(minifiedDomo),
+      SCRIPT({src: "lib/domo.js"}),
       SCRIPT("domo.stats=", JSON.stringify(stats)),
       SCRIPT({src: "docs/index.js", charset: "utf-8"}),
 
