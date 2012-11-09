@@ -198,7 +198,7 @@ HTML lang: "en",
           alert(styleSheet.innerHTML == "a{color:red;}\\n*{margin:0px;padding:0px;}\\n")
         """
 
-    P "dōmo exposes CSS generation through a single function, attached to the ", (CODE "domo.STYLE"), " function:"
+    P "dōmo exposes CSS generation through a single function, attached to ", (CODE "domo.STYLE"), ":"
 
     H4 "domo.STYLE.on(", (EM "selector"), ", ", (EM "properties..."), ")"
 
