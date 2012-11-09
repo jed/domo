@@ -98,8 +98,10 @@ HTML lang: "en",
 
     P {},
       "dōmo lets you write ", (A href: "#html", "HTML markup"), " and ", (A href: "#css", "CSS styles"), " in JavaScript syntax, in the browser and ", (A href: "#server", "on the server"), ". "
-      "At ", (B "less than #{Math.ceil(domo.stats.size / 100) / 10}kb"), " of minizipped JavaScript, dōmo is a simpler, easier, and more reliable alternative to template engines and CSS pre-processors. "
-      "And it works well with all the tools you already use, from jQuery to Backbone.js to CoffeeScript."
+      "dōmo is a simpler, easier, and more reliable alternative to template engines and CSS pre-processors, and works well with all the tools you already use, from jQuery to Backbone.js to CoffeeScript."
+
+    P {},
+      "You can download ", (A href: "http://domo-js.com/lib/domo.js", "dōmo for the browser"), " (just ", (B "#{Math.ceil(domo.stats.size / 100) / 10}kb"), " minizipped), or install ", (A href: "https://npmjs.org/package/domo", "dōmo for node.js"), "."
 
     H3 "Example"
 
