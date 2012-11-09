@@ -1,6 +1,6 @@
 {
   "name": "domo",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Markup, style, and code in one language.",
   "main": "lib/index.js",
   "repository": {
