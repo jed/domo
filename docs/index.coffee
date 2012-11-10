@@ -98,7 +98,7 @@ HTML lang: "en",
 
     P {},
       "dōmo lets you write ", (A href: "#html", "HTML markup"), " and ", (A href: "#css", "CSS styles"), " in JavaScript syntax, in the browser and ", (A href: "#server", "on the server"), ". "
-      "dōmo is a simpler, easier, and more reliable alternative to template engines and CSS pre-processors, and works well with all the tools you already use, from jQuery to Backbone.js to CoffeeScript."
+      "dōmo is a simpler, easier, and more reliable alternative to template engines and CSS pre-processors, and works well with all the tools you already use."
 
     P {},
       "You can download ", (A href: "http://domo-js.com/lib/domo.js", "dōmo for the browser"), " (under ", (B "#{Math.ceil(domo.stats.size / 100) / 10}kb"), " minizipped), or install ", (A href: "https://npmjs.org/package/domo", "dōmo for node.js"), "."
@@ -134,6 +134,14 @@ HTML lang: "en",
         """
 
     P "If you'd like to see a larger, real-world use of dōmo, just view ", (A href: "https://github.com/jed/domo/blob/master/docs/index.coffee", "the source of this very page"), "."
+
+    A name: "why"
+    H3 "Why?"
+
+    P "We all know CSS. We all know HTML. We mostly agree that neither is powerful enough to build modern web apps, hence the explosion of ", (A href: "http://lesscss.org", "CSS pre-processors"), " and ", (A href: "http://haml.info", "templating engines"), "."
+    P "If we're building tools to improve browser technologies like CSS and HTML, let's build them using another browser technology: JavaScript. Instead of adding incompatible extensions to CSS and HTML, let's first port them to a general-purpose language and do the extending there, where at least our tools can interoperate."
+    P "dōmo replaces the syntax of CSS and HTML syntax with JavaScript, leaving the semantics the same. You don't have to learn ad-hoc, underpowered syntax for looping or arithmetic or functions in your styles or markup, you can just use what you already know in JavaScript."
+    P "This means you can decouple your architecture from arbitrary implementation details, and render your app wherever it makes the most sense: on the server, on the browser, or both."
 
     A name: "html"
     H3 "Using dōmo instead of HTML"
