@@ -156,7 +156,7 @@ HTML lang: "en",
 
     H4 "domo.", (EM "elementName"), "(", (EM "attributes"), ", ", (EM "childNodes..."), ")"
 
-    P "Each function returns a namesake DOM element, and be accessed by UPPERCASE or lowercase name as a member of the ", (CODE "domo"), " object, as well as the ", (A href: "#convenience", "global object by default"), "."
+    P "Each function returns a namesake DOM element, and be accessed by UPPERCASE or lowercase name as a member of the ", (CODE "domo"), " object. These functions can also be ", (A href: "#convenience", "exported to the global namespace"), " for convenience by calling ", (CODE "domo.global(true)"), ", which is done automatically in browsers and other non-commonJS environments."
 
     P {},
       "The ", (EM "attributes"), " argument is an optional object that maps attribute names to their values. For easier use with JavaScript object literals, all camelCased attribute names are lowercased and hyphenated, so that names like ", (CODE class: "inline", "httpEquiv"), " and ", (CODE class: "inline", "http-equiv"), " are identical."
@@ -278,16 +278,17 @@ HTML lang: "en",
     DIV class: "sub",
       PRE class: "prettyprint",
         CODE class: "js", """
-          var domo = require("domo").global(false)
+          require("domo").global() // pollution is opt-in on CommonJS environments
+
           var http = require("http")
 
           http.createServer(function(req, res) {
             res.writeHead(200, {"Content-Type": "text/html"})
             res.end(
 
-              domo.DOCUMENT(
-                domo.HTML({lang: "en"},
-                  domo.BODY("You accessed ", req.url, " at ", new Date)
+              DOCUMENT(
+                HTML({lang: "en"},
+                  BODY("You accessed ", req.url, " at ", new Date)
                 )
               ).outerHTML
 
@@ -299,8 +300,9 @@ HTML lang: "en",
     H3 "Convenience versus cleanliness"
 
     P {},
-      "By default, ", (CODE class: "inline", "domo.global(true)"), " is auto-executed to export all of dōmo's functions to the global object, allowing you to call them without using the ", (CODE class: "inline", "domo"), " namespace. "
-      "This allows dōmo to mimic an in-code DSL, and given that only uppercase key names are exported, usually won't conflict with existing code."
+      (CODE class: "inline", "domo.global(true)"), " can be called to export all of dōmo's functions to the global object, so that you can call them without using the ", (CODE class: "inline", "domo"), " namespace. "
+      "This allows dōmo to mimic an in-code DSL, and given that only uppercase key names are exported, usually won't conflict with existing code. "
+      "Note that this is auto-executed by default in the browser and other non-CommonJS environments, and opt-in otherwise."
 
     P {},
       "However, if you're not cool with polluting the global scope, you still have some options. "

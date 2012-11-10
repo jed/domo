@@ -3,7 +3,7 @@ var path   = require("path")
 var zlib   = require("zlib")
 var uglify = require("uglify-js")
 var coffee = require("coffee-script")
-var domo   = require("./")
+var domo   = require("./").global()
 var info   = require("./package")
 
 compileJS()
@@ -41,9 +41,12 @@ function compileHTML() {
       SCRIPT({src: "docs/index.js", charset: "utf-8"}),
 
       NOSCRIPT(
+        H1("JavaScript required."),
+        P("This page is a client-side demonstration of dōmo. Please enable JavaScript to view it."),
+
         META({
           httpEquiv: "refresh",
-          content: "0;url=https://github.com/jed/domo"
+          content: "5;url=https://github.com/jed/domo"
         })
       )
     )
