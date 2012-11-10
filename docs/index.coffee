@@ -101,7 +101,7 @@ HTML lang: "en",
       "dōmo is a simpler, easier, and more reliable alternative to template engines and CSS pre-processors, and works well with all the tools you already use, from jQuery to Backbone.js to CoffeeScript."
 
     P {},
-      "You can download ", (A href: "http://domo-js.com/lib/domo.js", "dōmo for the browser"), " (just ", (B "#{Math.ceil(domo.stats.size / 100) / 10}kb"), " minizipped), or install ", (A href: "https://npmjs.org/package/domo", "dōmo for node.js"), "."
+      "You can download ", (A href: "http://domo-js.com/lib/domo.js", "dōmo for the browser"), " (under ", (B "#{Math.ceil(domo.stats.size / 100) / 10}kb"), " minizipped), or install ", (A href: "https://npmjs.org/package/domo", "dōmo for node.js"), "."
 
     H3 "Example"
 
@@ -156,7 +156,7 @@ HTML lang: "en",
 
     H4 "domo.", (EM "elementName"), "(", (EM "attributes"), ", ", (EM "childNodes..."), ")"
 
-    P "Each function returns its namesake DOM element, and be accessed as a member of the ", (CODE "domo"), " object, as well as the ", (A href: "#convenience", "global object by default"), "."
+    P "Each function returns a namesake DOM element, and be accessed by UPPERCASE or lowercase name as a member of the ", (CODE "domo"), " object, as well as the ", (A href: "#convenience", "global object by default"), "."
 
     P {},
       "The ", (EM "attributes"), " argument is an optional object that maps attribute names to their values. For easier use with JavaScript object literals, all camelCased attribute names are lowercased and hyphenated, so that names like ", (CODE class: "inline", "httpEquiv"), " and ", (CODE class: "inline", "http-equiv"), " are identical."
