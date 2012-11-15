@@ -3,6 +3,7 @@
   "version": "0.5.5",
   "description": "Markup, style, and code in one language.",
   "main": "lib/index.js",
+  "browserify": "lib/domo.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/jed/domo.git"
