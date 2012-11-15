@@ -20,10 +20,10 @@ HTML lang: "en",
       })
 
     STYLE type: "text/css",
-      STYLE.on ".prettyprint"                        , padding: 2
-      STYLE.on ".linenums"                           , marginTop: "0 auto 0"
-      STYLE.on ".L0,.L1,.L2,.L3,.L4,.L5,.L6,.L7,.L8" , listStyleType: "none"
-      STYLE.on ".L1,.L3,.L5,.L7,.L9"                 , background: "#eee"
+      STYLE.on ".prettyprint"                  , padding: 2
+      STYLE.on ".linenums"                     , marginTop: "0 auto 0"
+      STYLE.on (".L#{n}" for n in [0..8])      , listStyleType: "none"
+      STYLE.on (".L#{n}" for n in [1..9] by 2) , background: "#eee"
 
     STYLE type: "text/css",
 
@@ -36,7 +36,7 @@ HTML lang: "en",
         margin: "0 0 2em"
         padding: 0
 
-      STYLE.on "h1, h2, h3, h4, p, ul, ol, pre, .narrow"
+      STYLE.on ["h1", "h2", "h3", "h4", "p", "ul", "ol", "pre", ".narrow"],
         width: 750
         margin: "1em auto"
         display: "block"
@@ -58,7 +58,7 @@ HTML lang: "en",
         padding: "1em 0"
         boxShadow "1px 1px 6px #ccc"
 
-      STYLE.on "pre, code"
+      STYLE.on ["pre", "code"],
         fontSize: "0.9em"
         fontFamily: "Monaco, Courier New, monospace"
 
