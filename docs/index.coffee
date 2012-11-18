@@ -198,7 +198,7 @@ HTML lang: "en",
             STYLE.on("*", {margin: 0, padding: 0})
           )
 
-          alert(styleSheet.innerHTML == "a{color:red;}\\n*{margin:0px;padding:0px;}\\n")
+          alert(styleSheet.innerHTML == "a{color:red;}\\n*{margin:0;padding:0;}\\n")
         """
 
     P "dōmo exposes CSS generation through a single function, attached to ", (CODE "domo.STYLE"), ":"
