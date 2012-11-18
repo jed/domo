@@ -20,7 +20,7 @@ HTML lang: "en",
       })
 
     STYLE type: "text/css",
-      STYLE.on ".prettyprint"                  , padding: 2
+      STYLE.on ".prettyprint"                  , padding: "2px"
       STYLE.on ".linenums"                     , marginTop: "0 auto 0"
       STYLE.on (".L#{n}" for n in [0..8])      , listStyleType: "none"
       STYLE.on (".L#{n}" for n in [1..9] by 2) , background: "#eee"
@@ -31,19 +31,19 @@ HTML lang: "en",
         background: "#f6f6f6"
         color: "#222"
         fontFamily: "Helvetica, Arial, sans-serif"
-        fontSize: 18
+        fontSize: "18px"
         lineHeight: "1.5"
         margin: "0 0 2em"
         padding: 0
 
       STYLE.on ["h1", "h2", "h3", "h4", "p", "ul", "ol", "pre", ".narrow"],
-        width: 750
+        width: "750px"
         margin: "1em auto"
         display: "block"
 
       STYLE.on "h1"
         margin: "30px auto -60px auto"
-        fontSize: 150
+        fontSize: "150px"
         fontFamily: "Titillium Web"
 
       STYLE.on "a"
@@ -70,14 +70,7 @@ HTML lang: "en",
 
       STYLE.on ".why-domo"
         STYLE.on "li"
-          marginTop: 15
-
-      STYLE.on "iframe"
-        display: "none"
-
-      STYLE.on "textarea"
-        width: 500
-        height: 300
+          marginTop: "15px"
 
       STYLE.on "code.inline"
         margin: "0 2px"
