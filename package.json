@@ -1,6 +1,6 @@
 {
   "name": "domo",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "Markup, style, and code in one language.",
   "main": "lib/index.js",
   "browserify": "lib/domo.js",
